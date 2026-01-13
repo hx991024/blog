@@ -7,7 +7,7 @@ export default function Home() {
   const allPostsData = getSortedPostsData()
   return (
     <>
-      <main className="min-h-screen p-8 max-w-4xl mx-auto">
+      <div className="container mx-auto max-w-4xl px-4 py-12">
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4">欢迎来到我的博客</h1>
           <p className="text-gray-600">使用 Next.js 构建</p>
@@ -41,7 +41,7 @@ export default function Home() {
             </article>
           ))}
         </section>
-      </main>
+      </div>
     </>
   )
 }

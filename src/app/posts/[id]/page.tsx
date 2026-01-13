@@ -4,7 +4,6 @@ import { getPostData } from '@/lib/posts'
 import { format } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 
 type Props = {
   params: {
@@ -44,16 +43,10 @@ export default async function Post({ params }: Props) {
 
   return (
     <>
-      <main className="min-h-screen bg-gray-50">
+      <div className="container mx-auto max-w-4xl px-4 py-12 ">
         {/* 顶部导航区 */}
         <div className="bg-white border-b">
           <div className="max-w-3xl mx-auto px-6 py-8">
-            <Link
-              href="/"
-              className="text-gray-500 hover:text-blue-600 flex items-center gap-1 mb-6 transition-colors"
-            >
-              返回首页
-            </Link>
             <h1 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
               {post.title}
             </h1>
@@ -72,7 +65,7 @@ export default async function Post({ params }: Props) {
             </ReactMarkdown>
           </div>
         </article>
-      </main>
+      </div>
     </>
   )
 }

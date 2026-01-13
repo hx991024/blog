@@ -2,6 +2,7 @@
 title: '第一篇博客'
 date: '2026-01-10'
 excerpt: '学习使用 bun 和 nextjs 搭建自己的博客'
+tags: ['Next.js', 'Bun', 'React', 'Tutorial']
 ---
 
 # 你好，世界
