@@ -8,6 +8,7 @@ export type Post = {
   title: string
   date: string
   excerpt: string
+  tags: string[]
   content?: string // 在列表页面不需要内容
 }
 
