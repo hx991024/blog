@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import rehypeHighlight from 'rehype-highlight'
 
 type Props = {
   params: {
@@ -62,7 +63,9 @@ export default async function Post({ params }: Props) {
       {/* 文章内容区 */}
       <article className="max-w-3xl mx-auto px-6 py-12">
         <div className="prose max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+            {post.content}
+          </ReactMarkdown>
         </div>
       </article>
     </div>
