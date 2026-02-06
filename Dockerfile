@@ -24,8 +24,9 @@ WORKDIR /app
 ENV NODE_ENV production
 
 # 设置非 root 用户运行，提高安全性
-RUN groupadd -g 1001 -r nodejs
-RUN useradd -u 1001 -r -g nodejs bun
+RUN chown -R bun:bun /app
+# 切换到现有的 bun 用户
+USER bun
 
 # 复制构建产物
 COPY --from=builder /app/public ./public
