@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import matter from 'gray-matter'
 
 // 1. 定义文章类型
@@ -20,7 +20,13 @@ const postsDirectory = path.join(process.cwd(), 'posts')
  */
 export const getSortedPostsData = (): Post[] => {
   // 获取目录下所有文件名
-  const fileNames = fs.readdirSync(postsDirectory)
+  const fileNames = fs.readdirSync(postsDirectory).filter((file) => {
+    // 检查后缀是否为 .md
+    const isMd = file.endsWith('.md')
+    // 进阶检查：确保这是一个文件而非文件夹
+    const stat = fs.statSync(path.join(postsDirectory, file))
+    return isMd && stat.isFile()
+  })
   // 遍历所有文件，读取并解析
   const allPostsData = fileNames.map((fileName) => {
     // 移除文件名的 .md 后缀，作为 id

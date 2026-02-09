@@ -1,8 +1,10 @@
 import { getSortedPostsData } from '@/lib/posts'
-import PostListItem from '@/components/PostListItem'
+import PostList from '@/components/PostList'
+import { Suspense } from 'react'
 
 export default function Home() {
-  const allPostsData = getSortedPostsData()
+  // 1. 在服务端直接获取数据（SEO 友好，速度快）
+  const allPosts = getSortedPostsData()
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
@@ -10,12 +12,9 @@ export default function Home() {
         <h1 className="text-4xl font-bold mb-4">欢迎来到我的博客</h1>
         <p className="text-gray-600">探索技术，记录生活</p>
       </div>
-      <section className="space-y-8">
-        <h2 className="text-2xl font-bold border-b pb-2">最新文章</h2>
-        {allPostsData.map((post) => (
-          <PostListItem key={post.id} post={post} />
-        ))}
-      </section>
+      <Suspense fallback={<div className="text-center py-20 text-gray-400">加载中...</div>}>
+        <PostList allPosts={allPosts} />
+      </Suspense>
     </div>
   )
 }

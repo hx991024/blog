@@ -1,0 +1,15 @@
+import { SVGProps } from 'react'
+
+// 继承原生的 SVG 属性，这样你可以像设置普通标签一样设置 className
+export default function SearchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  )
+}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Search from './Search'
 
 export default function Header() {
   return (
@@ -8,9 +9,7 @@ export default function Header() {
           <span className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">Xavier</span>
         </Link>
         <nav className="flex items-center space-x-6 text-sm font-medium">
-          <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">
-            首页
-          </Link>
+          <Search />
         </nav>
       </div>
     </header>
